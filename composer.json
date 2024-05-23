@@ -1,0 +1,15 @@
+{
+    "name": "mirfees/mirfeesframework",
+    "autoload": {
+        "psr-4": {
+            "MirfeesFrameWork\\": "src/MirfeesFrameWork/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Miron Fissenko",
+            "email": "mirfees@gmail.com"
+        }
+    ],
+    "require": {}
+}
