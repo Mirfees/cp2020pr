@@ -3,6 +3,9 @@
 namespace MirfeesFrameWork\Models\Characters;
 
 use MirfeesFrameWork\Models\ActiveRecordEntity\ActiveRecordEntity;
+use MirfeesFrameWork\Models\Users\User;
+use MirfeesFrameWork\Exceptions\InvalidArgumentException;
+use MirfeesFrameWork\Services\Db;
 
 class Character extends ActiveRecordEntity
 {
@@ -187,6 +190,40 @@ class Character extends ActiveRecordEntity
 
     public function setWeaponsArmor(string $weaponsArmor): void {
         $this->weaponsArmor = $weaponsArmor;
+    }
+
+    public static function createFromArray(array $fields, User $author): Character
+    {
+        extract($fields);
+
+        if(empty($name)) {
+            throw new InvalidArgumentException('Назовите своего персонажа');
+        }
+
+        if(empty($role)) {
+            throw new InvalidArgumentException('Выберите роль');
+        }
+
+        $character = new Character();
+
+        $character->setUserId($author->getId());
+        $character->setName($name);
+        $character->setRole($role);
+        $character->setReputation($reputation);
+        $character->setCurrentIp($current_ip);
+        $character->setHumanity($humanity);
+        $character->setImg($img);
+        $character->setStyle($style);
+        $character->setFamilyBackground($family_background);
+        $character->setSiblings($siblings);
+        $character->setLifepath($lifepath);
+        $character->setCyberimplants($cyberimplants);
+        $character->setGear($gear);
+        $character->setWeaponsArmor($weapons_armor);
+
+        $character->save();
+
+        return $character;
     }
 
     public static function getTableName(): string {

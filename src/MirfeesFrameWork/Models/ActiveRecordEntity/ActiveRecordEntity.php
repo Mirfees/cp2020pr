@@ -3,6 +3,7 @@
 namespace MirfeesFrameWork\Models\ActiveRecordEntity;
 
 use MirfeesFrameWork\Models\Articles\Article;
+use MirfeesFrameWork\Models\Characters\Character;
 use MirfeesFrameWork\Services\Db;
 
 abstract class ActiveRecordEntity implements \JsonSerializable

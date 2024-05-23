@@ -30,6 +30,10 @@ class ArticlesController extends AbstractController
 
     public function delete(int $articleId)
     {
+        if ($this->user === null) {
+            throw new UnauthorizedException('Необходимо зарегистрироваться');
+        }
+
         if ($this->user->getRole() !== 'admin') {
             throw new ForbiddenException('Недостаточно прав!');
         }
