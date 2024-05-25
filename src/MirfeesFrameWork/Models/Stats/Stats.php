@@ -13,11 +13,6 @@ class Stats extends AbstractSkills
     /**
      * @var int
      */
-    protected $characterId;
-
-    /**
-     * @var int
-     */
     protected $intelligence;
 
     /**
@@ -75,10 +70,6 @@ class Stats extends AbstractSkills
      */
     protected $luck;
 
-    public function getCharacterId(): int {
-        return $this->characterId;
-    }
-
     public function getIntelligence(): int {
         return $this->intelligence;
     }
@@ -125,10 +116,6 @@ class Stats extends AbstractSkills
 
     public function getLuck(): int {
         return $this->luck;
-    }
-
-    public function setCharacterId(int $characterId): void {
-        $this->characterId = $characterId;
     }
 
     public function setIntelligence(int $intelligence): void {
@@ -179,7 +166,7 @@ class Stats extends AbstractSkills
         $this->luck = $luck;
     }
 
-    public static function createFromArray(array $fields, Character $character): Stats
+    public static function createFromArray(array $fields, Character $character): static
     {
         extract($fields);
 
