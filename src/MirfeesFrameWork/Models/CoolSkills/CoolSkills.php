@@ -11,27 +11,27 @@ class CoolSkills extends AbstractSkills
     /**
      * @var int
      */
-    protected $interrogation;
+    protected int $interrogation;
 
     /**
      * @var int
      */
-    protected $intimidate;
+    protected int $intimidate;
 
     /**
      * @var int
      */
-    protected $oratory;
+    protected int $oratory;
 
     /**
      * @var int
      */
-    protected $resist_to_drugs;
+    protected int $resist_to_drugs;
 
     /**
      * @var int
      */
-    protected $streetwise;
+    protected int $streetwise;
 
     /**
      * @return int
@@ -129,6 +129,21 @@ class CoolSkills extends AbstractSkills
         $coolSkills->save();
 
         return $coolSkills;
+    }
+
+    public function updateFromArray(array $fields): static
+    {
+        extract($fields);
+
+        $this->setInterrogation($interrogation);
+        $this->setIntimidate($intimidate);
+        $this->setOratory($oratoty);
+        $this->setResistToDrugs($resist_to_drugs);
+        $this->setStreetwise($streetwise);
+
+        $this->save();
+
+        return $this;
     }
 
     protected static function getTableName(): string

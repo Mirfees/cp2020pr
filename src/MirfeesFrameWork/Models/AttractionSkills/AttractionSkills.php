@@ -11,12 +11,12 @@ class AttractionSkills extends AbstractSkills
     /**
      * @var int
      */
-    protected $personalGrooming;
+    protected int $personalGrooming;
 
     /**
      * @var int
      */
-    protected $wardrobeStyle;
+    protected int $wardrobeStyle;
 
     public function getPersonalGrooming(): int
     {
@@ -51,6 +51,18 @@ class AttractionSkills extends AbstractSkills
         $attractionSkills->save();
 
         return $attractionSkills;
+    }
+
+    public function updateFromArray(array $fields): static
+    {
+        extract($fields);
+
+        $this->setPersonalGrooming($personal_grooming);
+        $this->setWardrobeStyle($wardrobe_style);
+
+        $this->save();
+
+        return $this;
     }
 
     protected static function getTableName(): string

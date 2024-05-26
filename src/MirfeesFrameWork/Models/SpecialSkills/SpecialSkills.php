@@ -11,52 +11,52 @@ class SpecialSkills extends AbstractSkills
     /**
      * @var int
      */
-    protected $authority;
+    protected int $authority;
 
     /**
      * @var int
      */
-    protected $charismatic_leadership;
+    protected int $charismatic_leadership;
 
     /**
      * @var int
      */
-    protected $combat_sense;
+    protected int $combat_sense;
 
     /**
      * @var int
      */
-    protected $credibility;
+    protected int $credibility;
 
     /**
      * @var int
      */
-    protected $family;
+    protected int $family;
 
     /**
      * @var int
      */
-    protected $interface;
+    protected int $interface;
 
     /**
      * @var int
      */
-    protected $jury_rig;
+    protected int $jury_rig;
 
     /**
      * @var int
      */
-    protected $medical_tech;
+    protected int $medical_tech;
 
     /**
      * @var int
      */
-    protected $resources;
+    protected int $resources;
 
     /**
      * @var int
      */
-    protected $streetdeal;
+    protected int $streetdeal;
 
     /**
      * @return int
@@ -231,6 +231,26 @@ class SpecialSkills extends AbstractSkills
         $specialSkills->save();
 
         return $specialSkills;
+    }
+
+    public function updateFromArray(array $fields): static
+    {
+        extract($fields);
+
+        $this->setAuthority($authority);
+        $this->setCharismaticLeadership($charismatic_leadership);
+        $this->setCombatSense($combat_sense);
+        $this->setFamily($family);
+        $this->setInterface($interface);
+        $this->setJuryRig($jury_rig);
+        $this->setCredibility($credibility);
+        $this->setMedicalTech($medical_tech);
+        $this->setResources($resources);
+        $this->setStreetdeal($streetdeal);
+
+        $this->save();
+
+        return $this;
     }
 
     protected static function getTableName(): string

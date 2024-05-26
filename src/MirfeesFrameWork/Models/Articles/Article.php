@@ -10,16 +10,16 @@ use MirfeesFrameWork\Services\Db;
 class Article extends ActiveRecordEntity
 {
     /** @var string */
-    protected $name;
+    protected string $name;
 
     /** @var string */
-    protected $text;
+    protected string $text;
 
     /** @var int */
-    protected $authorId;
+    protected int $authorId;
 
     /** @var string */
-    protected $createdAt;
+    protected string $createdAt;
 
     /**
      * @return string
@@ -29,7 +29,7 @@ class Article extends ActiveRecordEntity
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -58,7 +58,7 @@ class Article extends ActiveRecordEntity
         return $this->text;
     }
 
-    public function setText($text)
+    public function setText($text): void
     {
         $this->text = $text;
     }
@@ -70,10 +70,10 @@ class Article extends ActiveRecordEntity
 
     public function getAuthorId(): int
     {
-        return (int) $this->authorId;
+        return $this->authorId;
     }
 
-    public function setAuthor(User $author)
+    public function setAuthor(User $author): void
     {
         $this->authorId = $author->id;
     }

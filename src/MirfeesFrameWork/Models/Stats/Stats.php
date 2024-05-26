@@ -13,62 +13,62 @@ class Stats extends AbstractSkills
     /**
      * @var int
      */
-    protected $intelligence;
+    protected int $intelligence;
 
     /**
      * @var int
      */
-    protected $reflex;
+    protected int $reflex;
 
     /**
      * @var int
      */
-    protected $technic;
+    protected int $technic;
 
     /**
      * @var int
      */
-    protected $cool;
+    protected int $cool;
 
     /**
      * @var int
      */
-    protected $attraction;
+    protected int $attraction;
 
     /**
      * @var int
      */
-    protected $lift;
+    protected int $lift;
 
     /**
      * @var int
      */
-    protected $empathy;
+    protected int $empathy;
 
     /**
      * @var int
      */
-    protected $body;
+    protected int $body;
 
     /**
      * @var int
      */
-    protected $movement_allowance;
+    protected int $movement_allowance;
 
     /**
      * @var int
      */
-    protected $run;
+    protected int $run;
 
     /**
      * @var int
      */
-    protected $leap;
+    protected int $leap;
 
     /**
      * @var int
      */
-    protected $luck;
+    protected int $luck;
 
     public function getIntelligence(): int {
         return $this->intelligence;
@@ -189,6 +189,28 @@ class Stats extends AbstractSkills
         $stats->save();
 
         return $stats;
+    }
+
+    public function updateFromArray(array $fields): static
+    {
+        extract($fields);
+
+        $this->setBody($body);
+        $this->setCool($cool);
+        $this->setEmpathy($empathy);
+        $this->setAttraction($attraction);
+        $this->setLeap($leap);
+        $this->setLift($lift);
+        $this->setLuck($luck);
+        $this->setIntelligence($intelligence);
+        $this->setMovementAllowance($movement_allowance);
+        $this->setReflex($reflex);
+        $this->setRun($run);
+        $this->setTechnic($technic);
+
+        $this->save();
+
+        return $this;
     }
 
     public static function getTableName(): string

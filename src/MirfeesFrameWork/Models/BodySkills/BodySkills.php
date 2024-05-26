@@ -11,17 +11,17 @@ class BodySkills extends AbstractSkills
     /**
      * @var int
      */
-    protected $endurance;
+    protected int $endurance;
 
     /**
      * @var int
      */
-    protected $strengthFeat;
+    protected int $strengthFeat;
 
     /**
      * @var int
      */
-    protected $swimming;
+    protected int $swimming;
 
     public function getEndurance(): int
     {
@@ -77,6 +77,20 @@ class BodySkills extends AbstractSkills
 
         return $bodySkills;
     }
+
+    public function updateFromArray(array $fields): static
+    {
+        extract($fields);
+
+        $this->setEndurance($endurance);
+        $this->setStrengthFeat($strength_feat);
+        $this->setSwimming($swimming);
+
+        $this->save();
+
+        return $this;
+    }
+
 
     protected static function getTableName(): string
     {

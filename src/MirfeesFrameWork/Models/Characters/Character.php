@@ -226,6 +226,38 @@ class Character extends ActiveRecordEntity
         return $character;
     }
 
+    public function updateFromArray(array $fields): Character
+    {
+
+        extract($fields);
+
+        if(empty($name)) {
+            throw new InvalidArgumentException('Назовите своего персонажа');
+        }
+
+        if(empty($role)) {
+            throw new InvalidArgumentException('Выберите роль');
+        }
+
+        $this->setName($name);
+        $this->setRole($role);
+        $this->setReputation($reputation);
+        $this->setCurrentIp($current_ip);
+        $this->setHumanity($humanity);
+        $this->setImg($img);
+        $this->setStyle($style);
+        $this->setFamilyBackground($family_background);
+        $this->setSiblings($siblings);
+        $this->setLifepath($lifepath);
+        $this->setCyberimplants($cyberimplants);
+        $this->setGear($gear);
+        $this->setWeaponsArmor($weapons_armor);
+
+        $this->save();
+
+        return $this;
+    }
+
     public static function getTableName(): string {
         return 'characters';
     }

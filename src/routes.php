@@ -3,6 +3,8 @@ return [
     '~^characters/(\d+)$~' => [\MirfeesFrameWork\Controllers\CharactersController::class, 'view'],
     '~^characters/(\d+)/delete$~' => [\MirfeesFrameWork\Controllers\CharactersController::class, 'delete'],
     '~^characters/add$~' => [\MirfeesFrameWork\Controllers\CharactersController::class, 'add'],
+    '~^characters/(\d+)/edit~' => [\MirfeesFrameWork\Controllers\CharactersController::class, 'edit'],
+
 
     '~^articles/(\d+)$~' => [\MirfeesFrameWork\Controllers\ArticlesController::class, 'view'],
     '~^articles/(\d+)/comments$~' => [\MirfeesFrameWork\Controllers\CommentsController::class, 'add'],

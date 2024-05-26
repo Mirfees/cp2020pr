@@ -33,4 +33,5 @@ abstract Class AbstractSkills extends ActiveRecordEntity
     }
 
     abstract public static function createFromArray(array $fields,  Character $character): static;
+    abstract public function updateFromArray(array $fields): static;
 }
