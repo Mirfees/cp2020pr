@@ -6,6 +6,7 @@ return [
     '~^characters/(\d+)/edit~' => [\MirfeesFrameWork\Controllers\CharactersController::class, 'edit'],
 
 
+    '~^articles$~' => [\MirfeesFrameWork\Controllers\MainController::class, 'blog'],
     '~^articles/(\d+)$~' => [\MirfeesFrameWork\Controllers\ArticlesController::class, 'view'],
     '~^articles/(\d+)/comments$~' => [\MirfeesFrameWork\Controllers\CommentsController::class, 'add'],
 
@@ -14,6 +15,7 @@ return [
 
     '~^users/register$~' => [\MirfeesFrameWork\Controllers\UsersController::class, 'signUp'],
     '~^users/(\d+)/activate/(.+)$~' => [\MirfeesFrameWork\Controllers\UsersController::class, 'activate'],
+    '~^users/(\d+)/account$~' => [\MirfeesFrameWork\Controllers\UsersController::class, 'viewAccount'],
     '~^users/login$~' => [\MirfeesFrameWork\Controllers\UsersController::class, 'login'],
     '~^users/logout$~' => [\MirfeesFrameWork\Controllers\UsersController::class, 'logout'],
 

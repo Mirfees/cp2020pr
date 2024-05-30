@@ -12,8 +12,17 @@ class MainController extends AbstractController
 {
     public function main()
     {
-        $articles = Article::findAll();
         $title = 'Главная страница';
-        $this->view->renderHtml('main/main.php', ['articles' => $articles, 'title' => $title, 'user' => UsersAuthService::getUserByToken()]);
+        $this->view->renderHtml('main/main.php', ['title' => $title, 'user' => UsersAuthService::getUserByToken()]);
+    }
+
+    public function blog()
+    {
+        $title = 'Блог';
+        $articles = Article::findAll();
+        $this->view->renderHtml('blog/view.php', [
+            'title' => $title,
+            'articles' => $articles
+        ]);
     }
 }

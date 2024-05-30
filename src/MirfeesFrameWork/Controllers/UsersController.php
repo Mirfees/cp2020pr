@@ -4,7 +4,10 @@ namespace MirfeesFrameWork\Controllers;
 
 use MirfeesFrameWork\Exceptions\InvalidArgumentException;
 use MirfeesFrameWork\Exceptions\NotFoundException;
+use MirfeesFrameWork\Exceptions\UnauthorizedException;
 use MirfeesFrameWork\Exceptions\UserActivationException;
+use MirfeesFrameWork\Models\Articles\Article;
+use MirfeesFrameWork\Models\Characters\Character;
 use MirfeesFrameWork\Models\Users\EmailSender;
 use MirfeesFrameWork\Models\Users\UserActivationService;
 use MirfeesFrameWork\Models\Users\UsersAuthService;
@@ -91,5 +94,27 @@ class UsersController extends AbstractController
         User::logout();
         header('Location: /');
         exit();
+    }
+
+    public function viewAccount(int $id)
+    {
+
+        if($this->user === null) {
+            throw new UnauthorizedException('Войдите в аккаунт');
+        }
+
+        if($this->user->getId() != $id) {
+            throw new UnauthorizedException('Войдите в этот аккаунт');
+        }
+
+        $articles = Article::findAllByColumn('author_id', $this->user->getId());
+        $characters = Character::findAllByColumn('user_id', $this->user->getId());
+
+        $this->view->renderHtml('users/account.php', [
+            'user' => $this->user,
+            'articles' => $articles,
+            'characters' => $characters,
+            'title' => 'Аккаунт',
+        ]);
     }
 }

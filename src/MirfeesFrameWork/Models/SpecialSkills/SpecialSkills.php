@@ -131,6 +131,14 @@ class SpecialSkills extends AbstractSkills
     }
 
     /**
+     * @return int
+     */
+    public function getResources(): int
+    {
+        return $this->resources;
+    }
+
+    /**
      * @param int $authority
      */
     public function setAuthority(int $authority): void

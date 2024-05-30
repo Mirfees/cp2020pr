@@ -26,6 +26,11 @@ class IntelligenceSkills extends AbstractSkills
     /**
      * @var int
      */
+    protected int $botany;
+
+    /**
+     * @var int
+     */
     protected int $chemistry;
 
     /**
@@ -339,6 +344,22 @@ class IntelligenceSkills extends AbstractSkills
     }
 
     /**
+     * @return int
+     */
+    public function getBotany(): int
+    {
+        return $this->botany;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTeaching(): int
+    {
+        return $this->teaching;
+    }
+
+    /**
      * @param int $accounting
      */
     public function setAccounting(int $accounting): void
@@ -546,6 +567,14 @@ class IntelligenceSkills extends AbstractSkills
         $this->zoology = $zoology;
     }
 
+    /**
+     * @param int $botany
+     */
+    public function setBotany(int $botany): void
+    {
+        $this->botany = $botany;
+    }
+
     public static function createFromArray(array $fields, Character $character): static
     {
         extract($fields);
@@ -556,6 +585,7 @@ class IntelligenceSkills extends AbstractSkills
         $intelligenceSkills->setAccounting($accounting);
         $intelligenceSkills->setAwarenessNotice($awareness_notice);
         $intelligenceSkills->setBiology($biology);
+        $intelligenceSkills->setBotany($botany);
         $intelligenceSkills->setChemistry($chemistry);
         $intelligenceSkills->setComposition($composition);
         $intelligenceSkills->setDiagnosisIllness($diagnosis_illness);
@@ -592,6 +622,7 @@ class IntelligenceSkills extends AbstractSkills
         $this->setAccounting($accounting);
         $this->setAwarenessNotice($awareness_notice);
         $this->setBiology($biology);
+        $this->setBotany($botany);
         $this->setChemistry($chemistry);
         $this->setComposition($composition);
         $this->setDiagnosisIllness($diagnosis_illness);

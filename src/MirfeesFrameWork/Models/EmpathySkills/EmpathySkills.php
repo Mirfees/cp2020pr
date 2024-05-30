@@ -25,7 +25,7 @@ class EmpathySkills extends AbstractSkills
     /**
      * @var int
      */
-    protected int $seducation;
+    protected int $seduction;
 
     /**
      * @var int
@@ -69,9 +69,9 @@ class EmpathySkills extends AbstractSkills
     /**
      * @return int
      */
-    public function getSeducation(): int
+    public function getSeduction(): int
     {
-        return $this->seducation;
+        return $this->seduction;
     }
 
     /**
@@ -123,11 +123,11 @@ class EmpathySkills extends AbstractSkills
     }
 
     /**
-     * @param int $seducation
+     * @param int $seduction
      */
-    public function setSeducation(int $seducation): void
+    public function setSeduction(int $seduction): void
     {
-        $this->seducation = $seducation;
+        $this->seduction = $seduction;
     }
 
     /**
@@ -164,7 +164,7 @@ class EmpathySkills extends AbstractSkills
         $empathySkills->setHumanPerception($human_perception);
         $empathySkills->setInterview($interview);
         $empathySkills->setLeadership($leadership);
-        $empathySkills->setSeducation($seducation);
+        $empathySkills->setSeduction($seduction);
         $empathySkills->setSocial($social);
         $empathySkills->setPersuasionFastTalk($persuasion_fast_talk);
         $empathySkills->setPerform($perform);
@@ -181,7 +181,7 @@ class EmpathySkills extends AbstractSkills
         $this->setHumanPerception($human_perception);
         $this->setInterview($interview);
         $this->setLeadership($leadership);
-        $this->setSeducation($seducation);
+        $this->setSeduction($seduction);
         $this->setSocial($social);
         $this->setPersuasionFastTalk($persuasion_fast_talk);
         $this->setPerform($perform);

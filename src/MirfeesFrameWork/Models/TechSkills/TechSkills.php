@@ -11,6 +11,11 @@ class TechSkills extends AbstractSkills
     /**
      * @var int
      */
+    protected int $aeroTech;
+
+    /**
+     * @var int
+     */
     protected int $avTech;
 
     /**
@@ -102,6 +107,14 @@ class TechSkills extends AbstractSkills
      * @var int
      */
     protected int $cybertech;
+
+    /**
+     * @return int
+     */
+    public function getAeroTech(): int
+    {
+        return $this->aeroTech;
+    }
 
     /**
      * @return int
@@ -253,6 +266,14 @@ class TechSkills extends AbstractSkills
     public function getCybertech(): int
     {
         return $this->cybertech;
+    }
+
+    /**
+     * @param int $aeroTech
+     */
+    public function setAeroTech(int $aeroTech): void
+    {
+        $this->aeroTech = $aeroTech;
     }
 
     /**
@@ -413,6 +434,7 @@ class TechSkills extends AbstractSkills
 
         $techSkills = new TechSkills();
 
+        $techSkills->setAeroTech($aero_tech);
         $techSkills->setCharacterId($character->getId());
         $techSkills->setAvTech($av_tech);
         $techSkills->setBasicTech($basic_tech);
@@ -443,6 +465,7 @@ class TechSkills extends AbstractSkills
     {
         extract($fields);
 
+        $this->setAeroTech($aero_tech);
         $this->setAvTech($av_tech);
         $this->setBasicTech($basic_tech);
         $this->setCryotankOperation($cryotank_operation);

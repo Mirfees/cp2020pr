@@ -52,6 +52,8 @@ class CharactersController extends AbstractController
             'intelligenceSkills' => $intelligenceSkills,
             'reflexSkills' => $reflexSkills,
             'techSkills' => $techSkills,
+            'title' => 'Просмотр персонажа',
+            'user' => $this->user,
         ]);
     }
 
@@ -121,11 +123,23 @@ class CharactersController extends AbstractController
             header('Location: /characters/' . $character->getId(), true, 302);
             exit();
         }
+        $this->view->renderHtml('characters/add.php', [
+            'title' => 'Создание персонажа'
+        ]);
     }
 
     public function edit(int $characterId): void
     {
         $character = Character::getById($characterId);
+        $stats = Stats::getByCharacterId($characterId);
+        $attractionSkills = AttractionSkills::getByCharacterId($characterId);
+        $bodySkills = BodySkills::getByCharacterId($characterId);
+        $coolSkills = CoolSkills::getByCharacterId($characterId);
+        $specialSkills = SpecialSkills::getByCharacterId($characterId);
+        $empathySkills = EmpathySkills::getByCharacterId($characterId);
+        $intelligenceSkills = IntelligenceSkills::getByCharacterId($characterId);
+        $reflexSkills = ReflexSkills::getByCharacterId($characterId);
+        $techSkills = TechSkills::getByCharacterId($characterId);
 
         if ($character === null) {
             throw new NotFoundException();
@@ -162,6 +176,18 @@ class CharactersController extends AbstractController
             header('Location: /characters/' . $character->getId(), true, 302);
             exit();
         }
-        $this->view->renderHtml('characters/edit.php', ['character' => $character]);
+        $this->view->renderHtml('characters/edit.php',  [
+            'character' => $character,
+            'stats' => $stats,
+            'attractionSkills' => $attractionSkills,
+            'bodySkills' => $bodySkills,
+            'coolSkills' => $coolSkills,
+            'specialSkills' => $specialSkills,
+            'empathySkills' => $empathySkills,
+            'intelligenceSkills' => $intelligenceSkills,
+            'reflexSkills' => $reflexSkills,
+            'techSkills' => $techSkills,
+            'title' => 'Редактирование персонажа',
+        ]);
     }
 }

@@ -6,6 +6,7 @@ use MirfeesFrameWork\Models\ActiveRecordEntity\ActiveRecordEntity;
 use MirfeesFrameWork\Models\Users\User;
 use MirfeesFrameWork\Exceptions\InvalidArgumentException;
 use MirfeesFrameWork\Services\Db;
+use MirfeesFrameWork\Services\ImageUploader;
 
 class Character extends ActiveRecordEntity
 {
@@ -212,14 +213,49 @@ class Character extends ActiveRecordEntity
         $character->setReputation($reputation);
         $character->setCurrentIp($current_ip);
         $character->setHumanity($humanity);
-        $character->setImg($img);
-        $character->setStyle($style);
-        $character->setFamilyBackground($family_background);
         $character->setSiblings($siblings);
-        $character->setLifepath($lifepath);
-        $character->setCyberimplants($cyberimplants);
-        $character->setGear($gear);
-        $character->setWeaponsArmor($weapons_armor);
+
+        if ($_FILES['img']) {
+            $character->setImg(ImageUploader::getInstance()->uploadImage($_FILES['img']));
+        } else {
+            $character->setImg('');
+        }
+
+        if ($style) {
+            $character->setStyle($style);
+        } else {
+            $character->setStyle('');
+        }
+
+        if ($family_background) {
+            $character->setFamilyBackground($family_background);
+        } else {
+            $character->setFamilyBackground('');
+        }
+
+        if ($lifepath) {
+            $character->setLifepath($lifepath);
+        } else {
+            $character->setLifepath('');
+        }
+
+        if ($cyberimplants) {
+            $character->setCyberimplants($cyberimplants);
+        } else {
+            $character->setCyberimplants('');
+        }
+
+        if ($gear) {
+            $character->setGear($gear);
+        } else {
+            $character->setGear('');
+        }
+
+        if ($weapons_armor) {
+            $character->setWeaponsArmor($weapons_armor);
+        } else {
+            $character->setWeaponsArmor('');
+        }
 
         $character->save();
 
@@ -244,14 +280,49 @@ class Character extends ActiveRecordEntity
         $this->setReputation($reputation);
         $this->setCurrentIp($current_ip);
         $this->setHumanity($humanity);
-        $this->setImg($img);
-        $this->setStyle($style);
-        $this->setFamilyBackground($family_background);
         $this->setSiblings($siblings);
-        $this->setLifepath($lifepath);
-        $this->setCyberimplants($cyberimplants);
-        $this->setGear($gear);
-        $this->setWeaponsArmor($weapons_armor);
+
+        if ($_FILES['img']) {
+            $this->setImg(ImageUploader::getInstance()->uploadImage($_FILES['img']));
+        } else {
+            $this->setImg($this->getImg());
+        }
+
+        if ($style) {
+            $this->setStyle($style);
+        } else {
+            $this->setStyle('');
+        }
+
+        if ($family_background) {
+            $this->setFamilyBackground($family_background);
+        } else {
+            $this->setFamilyBackground('');
+        }
+
+        if ($lifepath) {
+            $this->setLifepath($lifepath);
+        } else {
+            $this->setLifepath('');
+        }
+
+        if ($cyberimplants) {
+            $this->setCyberimplants($cyberimplants);
+        } else {
+            $this->setCyberimplants('');
+        }
+
+        if ($gear) {
+            $this->setGear($gear);
+        } else {
+            $this->setGear('');
+        }
+
+        if ($weapons_armor) {
+            $this->setWeaponsArmor($weapons_armor);
+        } else {
+            $this->setWeaponsArmor('');
+        }
 
         $this->save();
 
